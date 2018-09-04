@@ -7,6 +7,6 @@ def index(request):
     return render(request, 'SampleApp/index.html')
 
 def sampleObjects(request):
-    sampleObjects = SampleModel.objects.ordered_by('date_added')
+    sampleObjects = SampleModel.objects.order_by('date_added')
     context = {'sampleObjects': sampleObjects}
     return render(request, 'SampleApp/sampleObjects.html', context)
