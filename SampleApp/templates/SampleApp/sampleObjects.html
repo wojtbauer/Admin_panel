@@ -6,7 +6,10 @@
   
   <ul>
     {% for sampleObject in sampleObjects %}
-      <li>{{ sampleObject }}</li>
+      <li>
+        <a href="{% url 'SampleApp:sampleObject' sampleObject.id %}">
+            {{ sampleObject }}</a>
+      </li>
     {% empty %}
       <li>No objects</li>
     {% endfor %}

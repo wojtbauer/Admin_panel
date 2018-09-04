@@ -11,4 +11,8 @@ urlpatterns = [
     
     #Show all sample objects.
     path('sampleObjects/', views.sampleObjects, name='sampleObjects'),
+    
+    #Detail page for a single object.
+    path('sampleObjects/<int:sampleObject_id>/', views.sampleObject, 
+    name='sampleObject'),
 ]
