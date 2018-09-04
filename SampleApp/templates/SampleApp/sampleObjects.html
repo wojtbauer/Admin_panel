@@ -1,0 +1,16 @@
+{% extends "SampleApp/base.html" %}
+
+{% block content %}
+
+  <p>Sample objects</p>
+  
+  <ul>
+    {% for sampleObject in sampleObjects %}
+      <li>{{ sampleObject }}</li>
+    {% empty %}
+      <li>No objects</li>
+    {% endfor %}
+  </ul>
+
+{% endblock content %}
+

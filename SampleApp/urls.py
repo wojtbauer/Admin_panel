@@ -6,6 +6,9 @@ from . import views
 
 app_name = 'SampleApp'
 urlpatterns = [
-    #home page.
+    #Home page.
     path('', views.index, name='index'),
+    
+    #Show all sample objects.
+    path('sampleObjects/', views.sampleObjects, name='sampleObjects'),
 ]
