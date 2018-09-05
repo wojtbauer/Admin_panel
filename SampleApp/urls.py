@@ -12,7 +12,10 @@ urlpatterns = [
     #Show all sample objects.
     path('sampleObjects/', views.sampleObjects, name='sampleObjects'),
     
-    #Detail page for a single object.
+    #Detail page for an single object.
     path('sampleObjects/<int:sampleObject_id>/', views.sampleObject, 
     name='sampleObject'),
+
+    #Page for adding a new sampleObject.
+    path('new_sampleObject/', views.new_sampleObject, name='new_sampleObject'),
 ]
