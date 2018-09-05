@@ -15,4 +15,13 @@ urlpatterns = [
     #Detail page for a single object.
     path('sampleObjects/<int:sampleObject_id>/', views.sampleObject, 
     name='sampleObject'),
+
+    #Page for adding a new sampleObject.
+    path('new_sampleObject/', views.new_sampleObject, name='new_sampleObject'),
+
+    #Page for adding a new entry.
+    path('new_entry/<int:sampleObject_id>/', views.new_entry, name='new_entry'),
+
+    #Page for editing an entry.
+    path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
 ]
