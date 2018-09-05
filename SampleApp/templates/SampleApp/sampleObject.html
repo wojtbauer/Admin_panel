@@ -2,14 +2,20 @@
 
 {% block content %}
 
-  <p>Sample object: {{ object }}</p>
+  <p>Sample object: {{ sampleObject }}</p>
   
   <p>Content:</p>
+  <p>
+    <a href="{% url 'SampleApp:new_entry' sampleObject.id %}">Add new entry</a>
+  </p>
   <ul>
   {% for entry in entries %}
     <li>
       <p>{{ entry.date_added|date:'d M Y H:i' }}</p>
       <p>{{ entry.text|linebreaks }}</p>
+      <p>
+        <a href="{% url 'SampleApp:edit_entry' entry.id %}">Edit entry</a>
+      </p>
     </li>
   {% empty %}
     <li>
