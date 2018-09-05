@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import SampleModel
-from .forms import SampleModelForm
+from .models import SampleModel, Entry
+from .forms import SampleModelForm, EntryForm
 # Create your views here.
 
 def index(request):
@@ -34,3 +34,20 @@ def new_sampleObject(request):
             
     context = {'form': form}
     return render(request, 'SampleApp/new_sampleObject.html', context)
+
+def new_entry(request, sampleObject_id):
+    sampleObject = SampleModel.objects.get(id=sampleObject_id)
+    
+    if request.method != 'POST':
+        form = EntryForm()
+    else:
+        form = EntryForm(data=request.POST)
+        if form.is_valid():
+            new_entry = form.save(commit=False)
+            new_entry.sampleObject = sampleObject
+            new_entry.save()
+            return HttpResponseRedirect(reverse('SampleApp:sampleObject',
+            args=[sampleObject_id]))
+            
+    context = {'sampleObject': sampleObject, 'form': form}
+    return render(request, 'SampleApp/new_entry.html', context)

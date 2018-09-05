@@ -1,0 +1,17 @@
+{% extends "SampleApp/base.html" %}
+
+{% block content %}
+
+  <p><a href="{% url 'SampleApp:sampleObject' sampleObject.id %}"> 
+      {{ sampleObject }}</a></p>
+  <p>Add new entry:</p>
+
+  <form action="{% url 'SampleApp:new_entry' sampleObject.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add entry</button>
+  </form>
+
+{% endblock content %}
+
+
