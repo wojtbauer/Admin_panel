@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     #My applications.
     'SampleApp',
+    'users',
 ]
 
 MIDDLEWARE = [
