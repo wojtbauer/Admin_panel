@@ -51,3 +51,19 @@ def new_entry(request, sampleObject_id):
             
     context = {'sampleObject': sampleObject, 'form': form}
     return render(request, 'SampleApp/new_entry.html', context)
+
+def edit_entry(request, entry_id):
+    entry = Entry.objects.get(id=entry_id)
+    sampleObject = entry.sampleObject
+
+    if request.method != "POST":
+        form = EntryForm(instance=entry)
+    else:
+        form = EntryForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('SampleApp:sampleObject', 
+            args=[sampleObject.id]))
+            
+    context = {'entry': entry,'sampleObject': sampleObject, 'form': form}
+    return render(request, 'SampleApp/edit_entry.html', context)
