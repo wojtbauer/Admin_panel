@@ -1,28 +1,31 @@
 {% extends "SampleApp/base.html" %}
 
-{% block content %}
+{% block header %}
+  <h3>{{ sampleObject }}</h3>
+{% endblock header %}
 
-  <p>Sample object: {{ sampleObject }}</p>
-  
-  <p>Content:</p>
+{% block content %}
   <p>
     <a href="{% url 'SampleApp:new_entry' sampleObject.id %}">Add new entry</a>
   </p>
-  <ul>
+
   {% for entry in entries %}
-    <li>
-      <p>{{ entry.date_added|date:'d M Y H:i' }}</p>
-      <p>{{ entry.text|linebreaks }}</p>
-      <p>
-        <a href="{% url 'SampleApp:edit_entry' entry.id %}">Edit entry</a>
-      </p>
-    </li>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>
+          {{ entry.date_added|date:'d M Y H:i' }}
+          <small>
+            <a href="{% url 'SampleApp:edit_entry' entry.id %}">Edit entry</a>
+          </small>
+        </h4>
+      </div>
+      <div class="panel-body">
+        {{ entry.text|linebreaks }}
+      </div>
+    </div><!-- panel -->
   {% empty %}
-    <li>
       No entry.
-    </li>
   {% endfor %}
-  </ul>
 
 
 {% endblock content %}

@@ -1,21 +1,26 @@
 {% extends "SampleApp/base.html" %}
 
+{% block header %}
+  <h3>Objects:</h3>
+{% endblock header %}
 {% block content %}
 
-  <p>Sample objects</p>
-  
   <ul>
     {% for sampleObject in sampleObjects %}
       <li>
-        <a href="{% url 'SampleApp:sampleObject' sampleObject.id %}">
-            {{ sampleObject }}</a>
+        <h4>
+          <a href="{% url 'SampleApp:sampleObject' sampleObject.id %}">
+              {{ sampleObject }}</a>
+        </h4>
       </li>
     {% empty %}
       <li>No objects</li>
     {% endfor %}
   </ul>
   
-  <a href="{% url 'SampleApp:new_sampleObject' %}">Add new object</a>
-
+  <u>
+    <h4><a href="{% url 'SampleApp:new_sampleObject' %}">
+        Add a new object</a></h4>
+  </u>
 {% endblock content %}
 
