@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 
 from .models import SampleModel, Entry
 from .forms import SampleModelForm, EntryForm
-# Create your views here.
 
+# Create your views here.
 def index(request):
     """SampleApp home page"""
     return render(request, 'SampleApp/index.html')
